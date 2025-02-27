@@ -1,0 +1,10 @@
+{
+    "full_name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "+1-555-123-4567",
+    "location": "New York, NY",
+    "skills": ["Python", "Java", "AWS"],
+    "experience_years": 5,
+    "education": "Master's in Computer Science",
+    "preferred_job_types": ["Full-time", "Remote"]
+} 
