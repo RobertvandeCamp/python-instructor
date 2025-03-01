@@ -4,7 +4,7 @@ from pathlib import Path
 from pydantic import ValidationError
 from assertpy import assert_that
 from src.resume.models import Candidate
-from tests.resume.assertions import candidate_assertions  # Import the assertions
+from tests.resume.candidate_assertions import candidate_assertions  # Import the assertions
 
 # Helper to load test data
 def load_test_data(filename):
@@ -29,30 +29,6 @@ class TestCandidate:
             .has_preferred_job_types("Full-time", "Remote")\
             .has_id()
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     def test_create_candidate_with_required_fields_only(self):
         """Test creating a candidate with only required fields"""
         data = load_test_data('candidate_required_only.json')

@@ -1,0 +1,9 @@
+{
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "title": "Software Engineer",
+    "company": "Tech Corp",
+    "location": "San Francisco, CA",
+    "required_skills": ["Python", "Java", "AWS"],
+    "min_experience": 3,
+    "job_type": "Full-time"
+}

@@ -24,13 +24,13 @@ class Candidate(BaseModel):
 
 class Job(BaseModel):
     """Represents a job posting."""
-    id: UUID
-    title: str
-    company: str
-    location: str
-    required_skills: List[str]
+    id: UUID = Field(default_factory=uuid4)
+    title: str = Field(..., min_length=1)
+    company: str = Field(..., min_length=1)
+    location: str = Field(..., min_length=1)
+    required_skills: List[str] = Field(default_factory=list)
     min_experience: int = Field(ge=0)
-    job_type: str
+    job_type: str = Field(..., min_length=1)
     salary_range: Optional[str] = None  # Optional field (similar to Optional<String> in Java)
 
 class Experience(BaseModel):
