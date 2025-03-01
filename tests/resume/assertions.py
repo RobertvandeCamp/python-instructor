@@ -10,13 +10,14 @@ def candidate_assertions():
             self.error(f"Expected a Candidate but got {type(self.val).__name__}")
         return self
     
+    @add_extension
     def has_email(self, expected):
         """Assert candidate has specific email"""
         self.is_candidate()
         if self.val.email != expected:
             self.error(f"Expected email to be '{expected}' but was '{self.val.email}'")
         return self
-    
+        
     @add_extension
     def has_full_name(self, expected):
         """Assert candidate has specific full name"""
@@ -24,7 +25,7 @@ def candidate_assertions():
         if self.val.full_name != expected:
             self.error(f"Expected full_name to be '{expected}' but was '{self.val.full_name}'")
         return self
-    
+
     @add_extension
     def has_phone(self, expected):
         """Assert candidate has specific phone"""

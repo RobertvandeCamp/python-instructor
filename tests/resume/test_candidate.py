@@ -17,7 +17,7 @@ class TestCandidate:
         """Test creating a candidate with all fields populated"""
         data = load_test_data('candidate_complete.json')
         candidate = Candidate(**data)
-        
+
         assert_that(candidate)\
             .has_full_name("John Doe")\
             .has_email("john.doe@example.com")\
@@ -28,6 +28,30 @@ class TestCandidate:
             .has_skills("Python", "Java", "AWS")\
             .has_preferred_job_types("Full-time", "Remote")\
             .has_id()
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def test_create_candidate_with_required_fields_only(self):
         """Test creating a candidate with only required fields"""
