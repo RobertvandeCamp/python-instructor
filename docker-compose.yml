@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: resume-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - resume-data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_DB=resumedb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: unless-stopped
+
+volumes:
+  resume-data:
+    driver: local 

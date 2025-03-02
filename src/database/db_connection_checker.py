@@ -2,19 +2,31 @@
 import psycopg2
 import sys
 import time
+import os
+from dotenv import load_dotenv
 
-def check_db_connection(host='localhost', 
-                        port=5432, 
-                        dbname='myappdb', 
-                        user='appuser', 
-                        password='apppassword',
+# Load environment variables from .env file
+load_dotenv()
+
+def check_db_connection(host=None, 
+                        port=None, 
+                        dbname=None, 
+                        user=None, 
+                        password=None,
                         max_retries=5,
                         retry_delay=2):
     """
     Check connection to PostgreSQL database.
     
-    Similar to Java's try-with-resources pattern but using Python's context manager.
+    Uses environment variables from .env by default.
     """
+    # Use parameters if provided, otherwise use environment variables
+    host = host or os.getenv("DB_HOST", "localhost")
+    port = port or os.getenv("DB_PORT", "5432")
+    dbname = dbname or os.getenv("DB_NAME", "resumedb")
+    user = user or os.getenv("DB_USER", "postgres")
+    password = password or os.getenv("DB_PASSWORD", "postgres")
+    
     retry_count = 0
     
     while retry_count < max_retries:
@@ -56,12 +68,7 @@ def check_db_connection(host='localhost',
     return False
 
 if __name__ == "__main__":
-    # Parse command line arguments - similar to Java args[]
-    # Default values from above function will be used if not provided
-    
-    # Successful connection = exit code 0, failed = exit code 1
-    # Similar to System.exit(0) or System.exit(1) in Java
-    if check_db_connection():
-        sys.exit(0)
-    else:
+    # When run directly, check the database connection
+    success = check_db_connection()
+    if not success:
         sys.exit(1)
